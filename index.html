@@ -61,7 +61,7 @@
     <script>
       // 메시지 API 호출 (기존 유지)
       fetch('https://b5e32c2b4931.ngrok-free.app/api/message')
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
           console.log('메시지:', data.message);
         })
@@ -71,7 +71,7 @@
 
       // 상위 20개 종목 데이터 API 호출 및 표 출력
       fetch('https://b5e32c2b4931.ngrok-free.app/api/top20')
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
           if (!Array.isArray(data) || data.length === 0) {
             document.getElementById('message').textContent = '상위 20개 종목 데이터를 불러오지 못했습니다.';
