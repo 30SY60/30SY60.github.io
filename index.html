@@ -8,7 +8,7 @@
     <div id="message">서버에서 메시지를 불러오는 중...</div>
 
     <script>
-      fetch('http://localhost:3000/api/message')
+      fetch('https://1c5dbab5b0f2.ngrok-free.app/api/message')
         .then(response => response.json())
         .then(data => {
           document.getElementById('message').textContent = data.message;
