@@ -60,7 +60,11 @@
 
     <script>
       // 메시지 API 호출 (기존 유지)
-      fetch('https://b5e32c2b4931.ngrok-free.app/api/message')
+      fetch('https://b5e32c2b4931.ngrok-free.app/api/message', {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
+      })
         .then(res => res.json())
         .then(data => {
           console.log('메시지:', data.message);
@@ -70,7 +74,11 @@
         });
 
       // 상위 20개 종목 데이터 API 호출 및 표 출력
-      fetch('https://b5e32c2b4931.ngrok-free.app/api/top20')
+      fetch('https://b5e32c2b4931.ngrok-free.app/api/top20', {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
+      })
         .then(res => res.json())
         .then(data => {
           if (!Array.isArray(data) || data.length === 0) {
