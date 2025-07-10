@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>내 첫 웹페이지 - 상위 20 종목</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h1>안녕하세요! 상엽님의 홈페이지입니다 🎉</h1>
-    <div id="message">주식 데이터를 불러오는 중...</div>
+<head>
+  <meta charset="UTF-8" />
+  <title>내 첫 웹페이지 - 상위 20 종목</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <a href="index.html">홈</a> |
+    <a href="terms.html">용어 사전</a> |
+    <a href="about.html">소개</a>
+  </nav>
 
-    <table id="stock-table" style="display: none;">
-      <thead>
-        <tr>
-          <th>종목명</th>
-          <th>현재가</th>
-          <th>전일비</th>
-          <th>등락률(%)</th>
-          <th>거래량</th>
-          <th><span class="stock-term" data-term="외국인 비율">외국인비율(%)</span></th>
-          <th><span class="stock-term" data-term="PER">PER</span></th>
-          <th><span class="stock-term" data-term="PBR">PBR</span></th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+  <h1>Free Stock Info 🎉</h1>
+  <div id="message">주식 데이터를 불러오는 중...</div>
 
-    <!-- 단어 설명 모달 -->
-    <div id="definition-modal">
-      <h2 id="def-title">용어 설명</h2>
-      <div id="def-content">내용을 불러오는 중...</div>
-      <button onclick="closeDefModal()">닫기</button>
-    </div>
+  <table id="stock-table" style="display:none;">
+    <thead>
+      <tr>
+        <th>종목명</th>
+        <th>현재가</th>
+        <th>전일비</th>
+        <th>등락률(%)</th>
+        <th>거래량</th>
+        <th>외국인비율(%)</th>
+        <th>PER</th>
+        <th>PBR</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>

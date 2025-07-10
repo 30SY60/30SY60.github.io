@@ -7,13 +7,40 @@ body {
   color: #333;
 }
 
+nav {
+  background: #3498db;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+  border-radius: 8px;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
 h1 {
   color: #1a202c;
   font-size: 28px;
   border-bottom: 2px solid #3498db;
   padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
+#message {
+  margin-top: 20px;
+  color: #555;
+}
+
+/* 테이블 스타일 (index.html용) */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -43,17 +70,24 @@ tr:hover {
   cursor: pointer;
 }
 
-#message {
-  margin-top: 20px;
-  color: #555;
+/* 용어 사전 페이지 - 용어 리스트 */
+.term-list {
+  list-style: none;
+  padding: 0;
 }
 
-.stock-term {
-  color: #3498db;
+.term-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
   cursor: pointer;
-  border-bottom: 1px dashed #3498db;
+  color: #3498db;
 }
 
+.term-list li:hover {
+  background-color: #ecf5ff;
+}
+
+/* 모달 스타일 (용어 설명 팝업) */
 #definition-modal {
   display: none;
   position: fixed;
@@ -66,6 +100,7 @@ tr:hover {
   padding: 20px;
   z-index: 999;
   max-width: 500px;
+  border-radius: 8px;
 }
 
 #definition-modal h2 {
@@ -75,4 +110,5 @@ tr:hover {
 #definition-modal button {
   margin-top: 15px;
   padding: 6px 12px;
+  cursor: pointer;
 }
