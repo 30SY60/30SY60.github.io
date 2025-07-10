@@ -2,47 +2,13 @@
 <html>
   <head>
     <title>내 첫 웹페이지 - 상위 20 종목</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 0 20px;
-      }
-      h1 {
-        color: #2c3e50;
-      }
-      table {
-        border-collapse: collapse;
-        width: 100%;
-        margin-top: 20px;
-      }
-      th, td {
-        border: 1px solid #ddd;
-        padding: 8px 12px;
-        text-align: center;
-      }
-      th {
-        background-color: #3498db;
-        color: white;
-      }
-      tr:nth-child(even) {
-        background-color: #f2f2f2;
-      }
-      tr:hover {
-        background-color: #d6eaff;
-      }
-      #message {
-        margin-top: 20px;
-        color: #555;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>안녕하세요! 상엽님의 홈페이지입니다 🎉</h1>
     <div id="message">주식 데이터를 불러오는 중...</div>
 
-    <table id="stock-table" style="display:none;">
+    <table id="stock-table" style="display: none;">
       <thead>
         <tr>
           <th>종목명</th>
@@ -50,70 +16,21 @@
           <th>전일비</th>
           <th>등락률(%)</th>
           <th>거래량</th>
-          <th>외국인비율(%)</th>
-          <th>PER</th>
-          <th>PBR</th>
+          <th><span class="stock-term" data-term="외국인 비율">외국인비율(%)</span></th>
+          <th><span class="stock-term" data-term="PER">PER</span></th>
+          <th><span class="stock-term" data-term="PBR">PBR</span></th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
 
-    <script>
-      // 메시지 API 호출 (기존 유지)
-      fetch('https://0f6c6601e158.ngrok-free.app/api/message', {
-        headers: {
-          'ngrok-skip-browser-warning': 'true'
-        }
-      })
-        .then(res => res.json())
-        .then(data => {
-          console.log('메시지:', data.message);
-        })
-        .catch(err => {
-          console.error('메시지 API 오류:', err);
-        });
+    <!-- 단어 설명 모달 -->
+    <div id="definition-modal">
+      <h2 id="def-title">용어 설명</h2>
+      <div id="def-content">내용을 불러오는 중...</div>
+      <button onclick="closeDefModal()">닫기</button>
+    </div>
 
-      // 상위 20개 종목 데이터 API 호출 및 표 출력
-      fetch('https://0f6c6601e158.ngrok-free.app/api/top20', {
-        headers: {
-          'ngrok-skip-browser-warning': 'true'
-        }
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (!Array.isArray(data) || data.length === 0) {
-            document.getElementById('message').textContent = '상위 20개 종목 데이터를 불러오지 못했습니다.';
-            return;
-          }
-
-          const tbody = document.querySelector('#stock-table tbody');
-          tbody.innerHTML = ''; // 초기화
-
-          data.forEach(item => {
-            const tr = document.createElement('tr');
-
-            // 등락률 %로 바꾸기 (예: 1.23 -> 1.23%)
-            // 외국인비율도 %로 표기 (있으면)
-            tr.innerHTML = `
-              <td>${item['종목명']}</td>
-              <td>${item['현재가']}</td>
-              <td>${item['전일비']}</td>
-              <td>${item['등락률']}</td>
-              <td>${item['거래량'].toLocaleString()}</td>
-              <td>${item['외국인비율'] ? item['외국인비율'] : '-'}</td>
-              <td>${item['PER'] ? item['PER'] : '-'}</td>
-              <td>${item['PBR'] ? item['PBR'] : '-'}</td>
-            `;
-            tbody.appendChild(tr);
-          });
-
-          document.getElementById('message').style.display = 'none';
-          document.getElementById('stock-table').style.display = 'table';
-        })
-        .catch(err => {
-          document.getElementById('message').textContent = '주식 데이터를 불러오는 데 실패했습니다.';
-          console.error('주식 데이터 오류:', err);
-        });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
