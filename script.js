@@ -1,5 +1,7 @@
+const domain_name = 'https://5973564db067.ngrok-free.app'
+
 // 메시지 API 호출
-fetch('https://0f6c6601e158.ngrok-free.app/api/message', {
+fetch(domain_name + '/api/message', {
   headers: {
     'ngrok-skip-browser-warning': 'true'
   }
@@ -13,7 +15,7 @@ fetch('https://0f6c6601e158.ngrok-free.app/api/message', {
   });
 
 // 주식 데이터 API 호출
-fetch('https://0f6c6601e158.ngrok-free.app/api/top20', {
+fetch(domain_name + '/api/top20', {
   headers: {
     'ngrok-skip-browser-warning': 'true'
   }
