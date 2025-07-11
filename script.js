@@ -53,25 +53,6 @@ fetch(domain_name + '/api/top20', {
     console.error('주식 데이터 오류:', err);
   });
 
-// 단어 설명 기능
-document.querySelectorAll('.stock-term').forEach(el => {
-  el.addEventListener('click', () => {
-    const term = el.getAttribute('data-term');
-    fetch(`https://ko.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('def-title').textContent = data.title || term;
-        document.getElementById('def-content').textContent = data.extract || '설명을 찾을 수 없습니다.';
-        document.getElementById('definition-modal').style.display = 'block';
-      })
-      .catch(err => {
-        document.getElementById('def-content').textContent = 'API 오류: 설명을 불러오지 못했습니다.';
-        document.getElementById('definition-modal').style.display = 'block';
-        console.error(err);
-      });
-  });
-});
-
 function closeDefModal() {
   document.getElementById('definition-modal').style.display = 'none';
 }
